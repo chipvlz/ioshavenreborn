@@ -1,149 +1,115 @@
 <template lang="html">
-  <div class="Contact-Page" v-if="ready">
-    <div class="types" v-if="!typeOfSub">
-      <div class="heading full">Choose Type</div>
-      <div class="type general" @click="changeType('general')">General</div>
-      <div class="type request" @click="changeType('request')">Request</div>
-      <div class="type bug" @click="changeType('bug')">Bug</div>
+  <div class="">
+    <loading v-if="!ready"/>
+
+    <div class="Contact-Page" v-if="ready">
+
+      <!-- S E L E C T   F O R M S -->
+      <div class="types" v-if="!typeOfSub">
+        <div class="heading full">What would you like to contact us about?</div>
+        <div class="type general" @click="changeType('general')">General</div>
+        <div class="type request" @click="changeType('request')">Request</div>
+        <div class="type bug" @click="changeType('bug')">Bug</div>
+      </div>
+
+      <!-- M A I N   F O R M S -->
+      <div class="form" v-if="typeOfSub">
+        <div class="heading capitalize">{{typeOfSub}} form
+          <div class="button" @click="changeType('')">Change form</div>
+        </div>
+
+        <div class="form-align note">
+          Do you want us to contact you back?
+          <a href="#" @click="contactBack = true">Yes</a> | <a href="#" @click="contactBack = false">No</a>
+          <br> <strong>Note</strong> we can only contact you on Discord if you are apart of our discord server. Join <a href="https://discord.gg/mTbwMyQ">here</a>.
+        </div>
+
+        <div class="group">
+          <label>Subject</label>
+          <input type="text" class="field" v-model.trim="general.subject">
+        </div>
+        <div class="group" v-if="this[typeOfSub].types">
+          <label>Type</label>
+          <select class="field" v-model.trim="request.type">
+            <option disabled value="">Type of Request</option>
+            <option v-for="t in this[typeOfSub].types">{{t}}</option>
+          </select>
+        </div>
+        <div class="group">
+          <label>Message</label>
+          <textarea rows="8" cols="80" v-model.trim="general.message" class="field"></textarea>
+        </div>
+      </div>
+
+      <!-- C O N T A C T   F O R M -->
+      <div class="form contact" v-if="typeOfSub && contactBack">
+        <div class="heading">Contact Me
+          <div class="button" @click="contactBack = false">Nevermind!</div>
+        </div>
+        <div class="form-align note">
+          <strong>Note</strong> All fields are optional and we will never share your information.
+        </div>
+        <div class="group" v-for="key in Object.keys(this.contact)">
+          <label>{{key}}</label>
+          <input type="text" class="field" v-model.trim="contact[key]">
+        </div>
+      </div>
+
+      <!-- S U M I T   B U T T O N S -->
+      <button class="button form-align submit" v-if="typeOfSub && !formIsValid" disabled>Submit</button>
+      <button class="button form-align submit" @click="submitForm" v-if="typeOfSub && formIsValid">Submit</button>
     </div>
 
-
-    <div class="form general" v-if="typeOfSub == 'general'">
-      <div class="heading">General form
-        <div class="button" @click="changeType('')">Change form</div>
-      </div>
-      <div class="group">
-        <label>Subject</label>
-        <input type="text" class="field" v-model.trim="general.subject">
-      </div>
-      <div class="group">
-        <label>Message</label>
-        <textarea rows="8" cols="80" v-model.trim="general.message" class="field"></textarea>
-      </div>
-    </div>
-
-
-
-    <div class="form request" v-if="typeOfSub == 'request'">
-      <div class="heading">Request form
-        <div class="button" @click="changeType('')">Change form</div>
-      </div>
-      <div class="group">
-        <label>Subject</label>
-        <input type="text" class="field" v-model.trim="request.subject">
-      </div>
-      <div class="group">
-        <label>Type</label>
-        <select class="field" v-model.trim="request.type">
-          <option disabled value="">Type of Request</option>
-          <option>App</option>
-          <option>Beta</option>
-          <option>Jailbreak</option>
-          <option>Other</option>
-        </select>
-      </div>
-      <div class="group">
-        <label>Message</label>
-        <textarea rows="8" cols="80" v-model.trim="request.message" class="field"></textarea>
-      </div>
-    </div>
-
-
-
-    <div class="form bug" v-if="typeOfSub == 'bug'">
-      <div class="heading">Bug form
-        <div class="button" @click="changeType('')">Change form</div>
-      </div>
-      <div class="group">
-        <label>Subject</label>
-        <input type="text" class="field" v-model.trim="bug.subject">
-      </div>
-      <div class="group">
-        <label>Type</label>
-        <select class="field" v-model.trim="bug.type">
-          <option disabled value="">Type of bug</option>
-          <option>App</option>
-          <option>Beta</option>
-          <option>Donating</option>
-          <option>Jailbreak</option>
-          <option>Website</option>
-          <option>Other</option>
-        </select>
-      </div>
-      <div class="group">
-        <label>Message</label>
-        <textarea rows="8" cols="80" v-model.trim="bug.message" class="field"></textarea>
-      </div>
-    </div>
-
-
-
-    <div class="form-align note" v-if="typeOfSub && contactBack !== 'no'">
-      Do you want us to contact you back?
-      <a href="#" @click="contactBack = 'yes'">Yes</a> | <a href="#" @click="contactBack = 'no'">No</a>
-      <br> <strong>Note</strong> we can only contact you on Discord if you are apart of our discord server. Join <a href="https://discord.gg/mTbwMyQ">here</a>.
-    </div>
-    <div class="form contact" v-if="typeOfSub && contactBack === 'yes'">
-      <div class="heading">Contact Methods</div>
-      <div class="group">
-        <label>Name</label>
-        <input type="text" class="field" v-model.trim="contact.name">
-      </div>
-      <div class="group">
-        <label>Email</label>
-        <input type="text" class="field" v-model.trim="contact.email">
-      </div>
-      <div class="group">
-        <label>Twitter</label>
-        <input type="text" class="field" v-model.trim="contact.twitter">
-      </div>
-      <div class="group">
-        <label>Discord</label>
-        <input type="text" class="field" v-model.trim="contact.discord">
-      </div>
-      <div class="group">
-        <label>Reddit</label>
-        <input type="text" class="field" v-model.trim="contact.reddit">
-      </div>
-    </div>
-
-    <button class="button form-align submit" v-if="typeOfSub && !formIsValid" disabled>Submit</button>
-    <button class="button form-align submit" @click="submitForm" v-if="typeOfSub && formIsValid">Submit</button>
   </div>
 </template>
 
 <script>
+import Loading from '~/components/Loading.vue'
 export default {
   layout: 'default',
+  components: {
+    Loading
+  },
   data () {
     return {
+      submitting: false,
       contactBack: '',
       ready: false,
       typeOfSub: '',
       server: '',
-      contact: {},
+      contact: {
+        'Name': '',
+        'Email': '',
+        'Discord': '',
+        'Twitter': '',
+        'Reddit': ''
+      },
       general: {
+        color: '#8bc34a',
         subject: '',
         message: ''
       },
       request: {
+        color: '#9c27b0',
         subject: '',
         message: '',
-        type: ''
+        type: '',
+        types: ['App', 'Beta', 'Jailbreak', 'Other']
       },
       bug: {
+        color: '#f44336',
         subject: '',
         message: '',
-        type: ''
+        type: '',
+        types: ['App', 'Beta', 'Donating', 'Jailbreak', 'Website', 'Other']
       },
       display: false
     }
   },
   mounted () {
     const client = new window.Discord.Client()
-    client.login('')
+    client.login('MzA2ODU5OTgwMDMwNzM4NDQy.DNDp4w.M8MOcOHY6lBAFqxS5AzItZI_WC0')
     client.on('ready', () => {
-      console.log(`Logged in as ${client.user.tag}!`)
       this.server = client.channels.find('name', 'general')
       this.ready = true
     })
@@ -160,29 +126,32 @@ export default {
     }
   },
   methods: {
-
     changeType (x) {
       console.log(x)
       this.typeOfSub = x
     },
     submitForm () {
-      let str = ''
+      this.submitting = true
+      let embed = new window.Discord.RichEmbed()
       let t = this[this.typeOfSub]
-      Object.keys(t).forEach(key => {
-        str += `\n**${key.toUpperCase()}:**`
-        str += '\n```\n' + t[key] + '```\n'
-      })
-      str += '\n\n***---Contact Info---***\n'
-      Object.keys(this.contact).forEach(key => {
-        str += `\n**${key.toUpperCase()}:**`
-        str += '\n```\n' + this.contact[key] + '```\n'
-      })
-      str += '---------\n'
-      str += 'submitted via https://ioshaven.co/contact'
+      embed.setColor(t.color)
+      embed.setTitle('[' + this.typeOfSub + '] ' + t.subject.toUpperCase())
+      embed.setDescription(t.message)
+      if (t.type) embed.addField('type', t.type, true)
+      embed.addField('\u200B', '\u200B', false)
+      embed.addField('\u200B', '--- Contact Info ---', false)
 
-      this.server.send(str).then(message => {
-        console.log('sent')
-      }).catch(console.error)
+      Object.keys(this.contact).forEach(key => {
+        embed.addField(key, this.contact[key], true)
+      })
+      embed.setFooter('sent via https://ioshaven.co/contact')
+      this.server.send('', embed).then(res => {
+        this.submitting = false
+        this.ready = false
+        window.setTimeout(() => {
+          location.reload()
+        }, 1000)
+      })
     }
   }
 }
@@ -232,6 +201,8 @@ export default {
 .form {
     border: 1px solid;
     padding: 1rem;
+    margin: 1rem auto;
+    box-sizing: border-box;
 }
 
 .heading {
@@ -244,6 +215,7 @@ export default {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    &.capitalize {text-transform: capitalize}
 }
 
 .button {
@@ -252,6 +224,7 @@ export default {
     color: white;
     padding: 1rem;
     cursor: pointer;
+    text-align: center;
     &.submit {
       margin-top: 1rem;
       text-align: center;

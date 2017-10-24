@@ -16,12 +16,16 @@ export default {
 
 <style lang="scss" scoped>
 .Loading {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
-    right: 0;
+    width: 100%;
+    height: 100%;
     text-align: center;
-    margin-top: 8rem;
     font-size: 6rem;
+    color: white;
+    z-index: 999;
+    padding: 4rem 0rem 10rem;
+    background: rgba(0,0,0,0.8);
 }
 </style>

@@ -9,8 +9,8 @@
       <a href="#" class="item"><i class="fas fa-user-secret"></i>jailbreaks</a>
       <a href="/help" class="item"><i class="fas fa-question-circle"></i>help</a>
       <a href="/cydia_impactor" class="item"><i class="fas fa-wrench"></i>cydia impactor</a>
-      <a href="#" class="item"><i class="fas fa-bug"></i>request/report an app</a>
-      <a href="#" class="item"><i class="fab fa-discord"></i>join our discord</a>
+      <a href="/contact" class="item"><i class="fas fa-bug"></i>Contact Developer</a>
+      <a href="https://discord.gg/mTbwMyQ" class="item"><i class="fab fa-discord"></i>join our discord</a>
     </sidebar>
 
     <!-- <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" id="paypalDonate" style="display: none;">
@@ -36,12 +36,9 @@ export default {
   components: {
     Sidebar
   },
-  // data () {
-  //   return {
-  //     sideVisible: false
-  //   }
-  // },
-
+  mounted () {
+    window.goToPayPal = this.donate
+  },
   methods: {
     donate (e) {
       e.preventDefault()

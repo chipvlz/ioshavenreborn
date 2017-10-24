@@ -10,7 +10,7 @@
       </h2>
       <div class="links">
         <a href="#main-side-bar" class="button--green" @click="showSide">Launch</a>
-        <a href="https://github.com/nuxt/nuxt.js" target="_blank" class="button--grey">Donate</a>
+        <a href="#" class="button--grey" @click="donate">Donate</a>
       </div>
     </div>
   </section>
@@ -26,6 +26,9 @@ export default {
   methods: {
     showSide () {
       window.dispatchEvent(new Event('toggleSidebar'))
+    },
+    donate (e) {
+      window.goToPayPal(e)
     }
   }
 }
