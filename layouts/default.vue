@@ -1,0 +1,103 @@
+<template>
+  <div>
+    <nuxt id="content"/>
+    <sidebar color="#009688" title="iOS Haven">
+      <a href="/" class="item"><i class="fas fa-home"></i>home</a>
+      <a href="#" @click="donate" class="item"><i class="fab fa-paypal"></i>donate</a>
+      <a href="/apps" class="item"><i class="fab fa-app-store"></i>apps</a>
+      <a href="#" class="item"><i class="fas fa-flask"></i>betas</a>
+      <a href="#" class="item"><i class="fas fa-user-secret"></i>jailbreaks</a>
+      <a href="#" class="item"><i class="fas fa-bug"></i>request/report an app</a>
+      <a href="#" class="item"><i class="fab fa-discord"></i>join our discord</a>
+    </sidebar>
+
+    <!-- <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" id="paypalDonate" style="display: none;">
+      <input type="hidden" name="cmd" value="_s-xclick">
+      <input type="hidden" name="hosted_button_id" value="E8QZHGDDUQAGY">
+      <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+      <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+    </form> -->
+    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" id="paypalDonate" v-show="false">
+      <input type="hidden" name="cmd" value="_s-xclick">
+      <input type="hidden" name="hosted_button_id" value="E8QZHGDDUQAGY">
+      <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+      <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+    </form>
+
+  </div>
+</template>
+
+<script>
+import Sidebar from '~/components/Sidebar.vue'
+
+export default {
+  components: {
+    Sidebar
+  },
+  // data () {
+  //   return {
+  //     sideVisible: false
+  //   }
+  // },
+
+  methods: {
+    donate (e) {
+      e.preventDefault()
+      document.getElementById('paypalDonate').submit()
+    }
+  }
+}
+</script>
+
+
+
+<style lang="scss">
+#content {
+  margin-top: 5rem;
+  padding-bottom: 5rem;
+}
+html {
+  font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 16px;
+  word-spacing: 1px;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.button--green {
+  display: inline-block;
+  border-radius: 4px;
+  border: 1px solid #3b8070;
+  color: #3b8070;
+  text-decoration: none;
+  padding: 10px 30px;
+}
+
+.button--green:hover {
+  color: #fff;
+  background-color: #3b8070;
+}
+
+.button--grey {
+  display: inline-block;
+  border-radius: 4px;
+  border: 1px solid #35495e;
+  color: #35495e;
+  text-decoration: none;
+  padding: 10px 30px;
+  margin-left: 15px;
+}
+
+.button--grey:hover {
+  color: #fff;
+  background-color: #35495e;
+}
+</style>

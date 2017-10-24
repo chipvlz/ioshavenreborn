@@ -1,0 +1,138 @@
+<template lang="html">
+  <div class="App" @click="showPopup">
+    <div class="content" >
+      <div class="title">{{data.title}}</div>
+      <div class="image" :style="{'background-image': 'url(' + link('image') + ')'}"></div>
+      <div class="version">Version: {{data.version}}</div>
+      <a class="ipa button" :href="link('dl')" v-if="data.dl">Download .ipa</a>
+      <a class="signed button" :href="link('signed')" v-if="data.signed">Install Signed</a>
+    </div>
+
+    <popup :visible="popupVisible">
+      <div class="header">{{data.title}}</div>
+      <div class="body">
+        <span v-html="data.desc" class="markdown-body"></span>
+      </div>
+      <div class="footer">
+        <span></span>
+        <span id="popup-button-wrapper">
+          <a class="ipa button" :href="link('dl')" v-if="data.dl">Download .ipa</a>
+          <a class="signed button" :href="link('signed')" v-if="data.signed">Install Signed</a>
+        </span>
+
+      </div>
+    </popup>
+  </div>
+</template>
+
+<script>
+import Popup from '~/components/Popup.vue'
+
+export default {
+  components: {
+    Popup
+  },
+  props: ['data'],
+  data () {
+    return {
+      popupVisible: false
+    }
+  },
+  methods: {
+    link (type) {
+      var t = this.data[type] || ''
+      if (this.data[type] && this.data[type].slice(0, 4) === 'http') return this.data[type]
+      else if (t.length > 0) {
+        if (type === 'image') return 'https://dashboard.ioshaven.co/image/' + this.data[type]
+        if (type === 'dl') return 'https://dashboard.ioshaven.co/ipa/' + this.data[type]
+        if (type === 'signed') return this.data[type]
+      } else return ''
+    },
+    showPopup (e) {
+      console.log(this.link('dl'))
+      if (e.target.href) return
+      this.popupVisible = !this.popupVisible
+    }
+  }
+}
+</script>
+
+<style lang="scss" scoped>
+.App {
+  $color: #fff;
+  background: $color;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.5s;
+  &:hover {
+    box-shadow: 0px 6px 6px darken($color, 50%);
+  }
+  // width: 300px;
+}
+.content {
+  display: grid;
+  grid-gap: 1rem;
+  text-align: center;
+  padding: 1em;
+}
+.image {
+    height: 13rem;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.title {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow-x: hidden;
+    text-transform: none;
+    font-size: 1.6rem;
+    padding-bottom: 1rem;
+    font-weight: bold;
+    border-bottom:1px solid #ccc
+}
+.button {
+  text-decoration: none;
+  display: block;
+  padding: 1rem;
+  border: 1px solid;
+  border-radius: 4px;
+  outline: none !important;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+
+.ipa {
+  $color: #2196f3;
+  background: $color;
+  color: white;
+  border-color: darken($color, 10%);
+  text-shadow: 0px 1px darken($color, 20%);
+  &:hover {
+    background: darken($color, 10%);
+  }
+}
+.signed {
+  $color: #8bc34a;
+  background: $color;
+  color: white;
+  border-color: darken($color, 10%);
+  text-shadow: 0px 1px darken($color, 20%);
+  &:hover {
+    background: darken($color, 10%);
+  }
+}
+.footer .button {
+  display: inline-block;
+  margin-left: 0.5rem;
+  font-size: 0.9rem;
+}
+#popup-button-wrapper{
+  display: flex;
+}
+#version{font-size: 0.5rem}
+
+</style>
