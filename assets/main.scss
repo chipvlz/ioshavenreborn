@@ -1,4 +1,31 @@
-.center {
+.center-head {
   text-align: center;
   font-size: 2rem;
+}
+.center-body {
+  text-align: center;
+}
+.margin-downloads {
+  margin-left: 10rem;
+}
+.margins-howto {
+  margin-left: 10rem;
+}
+.margin-errors{
+  margin-left: 10rem;
+  text-decoration: none;
+  color: black;
+}
+a.margin-errors:hover {
+  color: blue;
+  text-decoration: underline;
+}
+.fontawesome {
+  font-size: 1.5rem;
+  text-decoration: none;
+  color: none;
+}
+
+.no-underline {
+  text-decoration: none
 }
