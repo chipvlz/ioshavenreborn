@@ -1,12 +1,33 @@
 <template lang="html">
   <div class="">
-
     <loading v-if="loading"/>
-    <div class="search-bar-wrapper">
+    <div class="edit-buttons align">
+      <div class="item" v-if="!editing" @click="toggleEdit">
+        <i class="fas fa-pencil"></i> Edit
+      </div>
+      <div class="item" v-if="editing" @click="toggleEdit">
+        <i class="fas fa-eye"></i> Preview
+      </div>
+
+      <div class="item" v-if="editing" @click="createApp">
+        <i class="fas fa-plus"></i> Create
+      </div>
+
+      <div class="item" v-if="editing">
+        <i class="fas fa-save"></i> Save
+      </div>
+
+      <div class="item">
+        <i class="fas fa-cloud-upload"></i> Go Live
+      </div>
+
+    </div>
+    <div class="search-bar-wrapper align">
       <searchbar v-on:result="filterApps" v-if="!loading"/>
     </div>
-    <div :class="{'apps': true, 'loading': searching}" id="apps">
-        <app :data="app" v-for="app in searchResults":key="app.id"/>
+
+    <div :class="{'apps': true, 'align': true, 'loading': searching, 'editing': editing}" id="apps">
+        <app :edit="editing" :data="app" v-for="app in searchResults":key="app.id"/>
     </div>
   </div>
 </template>
@@ -25,16 +46,39 @@ export default {
   },
   layout: 'default',
   async asyncData ({ params }) {
-    let { data } = await axios.get('https://dashboard.ioshaven.co')
+    let { data } = await axios.get('http://localhost:4433/api/apps')
     return { apps: data, searchResults: data }
   },
   data () {
     return {
       loading: true,
-      searching: true
+      searching: true,
+      editing: false
     }
   },
   methods: {
+    createApp () {
+      let app = {
+        title: 'Untitled',
+        image: '',
+        version: '',
+        desc: '',
+        dl: '',
+        signed: '',
+        tags: []
+      }
+      // console.log(this.apps)
+      this.apps['Untitled'] = app
+      this.searchResults['Untitled'] = app
+      this.filterApps({text: 'Untitled'}, true)
+    },
+    toggleEdit () {
+      this.editing = !this.editing
+      this.loading = true
+      setTimeout(function () {
+        window.dispatchEvent(new Event('resize'))
+      })
+    },
     filterApps (search, resize = true) {
       this.searchResults = []
       let sorted = Object.keys(this.apps).sort((a, b) => {
@@ -126,6 +170,24 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.edit-buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  grid-gap: 1rem;
+}
+.item {
+  font-size: 1.1rem;
+  border: 1px solid #000;
+  padding: 0.5rem;
+  text-align: center;
+  background: white;
+  border-radius: 4px;
+  &:hover{
+    cursor: pointer;
+    box-shadow: 0px 2px 2px darken(white, 50%);
+  }
+}
+
 .apps{
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -133,8 +195,11 @@ export default {
   grid-auto-flow: dense;
   grid-auto-rows: 1px;
   max-width: 960px;
+  &.editing{
+    grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+  }
 }
-.apps, .search-bar-wrapper {
+.align {
   margin: auto;
   @media screen and (max-width: 575px){
     grid-template-columns: repeat(1, 1fr);

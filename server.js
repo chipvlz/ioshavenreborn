@@ -1,36 +1,29 @@
 var express =require('express')
 var app = express()
 var server = require('http').Server(app)
-const Discord = require('discord.js')
-const client = new Discord.Client()
-client.login('MzA2ODU5OTgwMDMwNzM4NDQy.DM7jjw.HCQdxCQHxg8M7PHzU2AnpM75Xzs')
-
-client.on('ready', () => {
-  // client.user.send('hello!')
-  // .then(message => console.log('sent'))
-  // .catch(console.error)
-  client.channels.find('name', 'general').send('hello!')
-  .then(message => console.log('sent'))
-  .catch(console.error)
-  console.log();
-})
-
-
 const bodyParser  =  require('body-parser')
+const env = require('./env.json')
 
+const Dropbox = require('dropbox');
+const dbx = new Dropbox({ accessToken: env.dropbox });
 
 app.use(bodyParser.urlencoded({extended:false}))
 app.use(bodyParser.json())
 
-// this is one last test
 
-app.post('/', home)
+app.get('/api/apps', api_apps)
 
 
-function home(req, res) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.json({
-    test: 'did it work?'
+function api_apps(req, res) {
+  dbx.filesDownload({path: '/json/apps.json'}).then(function(response) {
+    let a = response.fileBinary
+    a = JSON.parse(a)
+    Object.keys(a).forEach(app => {
+      if (!a[app].tags) a[app].tags = ''
+      if (!a[app].dl) a[app].dl = ''
+      if (!a[app].signed) a[app].signed = ''
+    })
+    res.json(a)
   })
 }
 

@@ -18,7 +18,8 @@
     "discord.js": "^11.2.1",
     "fs": "0.0.1-security",
     "masonry-layout": "^4.2.0",
-    "nuxt": "^1.0.0-rc11"
+    "nuxt": "^1.0.0-rc11",
+    "vue-input-tag": "0.0.16"
   },
   "devDependencies": {
     "babel-eslint": "^7.2.3",

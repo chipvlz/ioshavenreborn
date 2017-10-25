@@ -46,6 +46,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.section {
+  margin-bottom: 2rem;
+}
 .toggle {
     color: inherit;
     font-size: 1.2rem;

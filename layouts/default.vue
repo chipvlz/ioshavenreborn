@@ -1,30 +1,25 @@
 <template>
   <div>
     <nuxt id="content"/>
-    <sidebar color="#009688" title="iOS Haven">
-      <a href="/" class="item"><i class="fas fa-home"></i>home</a>
-      <a href="#" @click="donate" class="item"><i class="fab fa-paypal"></i>donate</a>
-      <a href="/apps" class="item"><i class="fab fa-app-store"></i>apps</a>
-      <a href="#" class="item"><i class="fas fa-flask"></i>betas</a>
-      <a href="#" class="item"><i class="fas fa-user-secret"></i>jailbreaks</a>
-      <a href="/help" class="item"><i class="fas fa-question-circle"></i>help</a>
-      <a href="/cydia_impactor" class="item"><i class="fas fa-wrench"></i>cydia impactor</a>
-      <a href="/contact" class="item"><i class="fas fa-bug"></i>Contact Developer</a>
-      <a href="https://discord.gg/mTbwMyQ" class="item"><i class="fab fa-discord"></i>join our discord</a>
+    <sidebar color="#F44336" title="Dashboard">
+      <div class="section">
+        <h1>General</h1>
+        <a href="/" class="item"><i class="fas fa-home"></i>home</a>
+        <a href="#" class="item"><i class="fas fa-info-circle"></i>announcements</a>
+        <a href="/help" class="item"><i class="fas fa-inbox"></i>Contact Submissions</a>
+        <a href="/apps" class="item"><i class="fas fa-bolt"></i>log</a>
+      </div>
+      <div class="section">
+        <h1>Moderation</h1>
+        <a href="/apps" class="item"><i class="fab fa-app-store"></i>apps</a>
+        <a href="#" class="item"><i class="fas fa-flask"></i>betas</a>
+        <a href="#" class="item"><i class="fas fa-user-secret"></i>jailbreaks</a>
+        <a href="#" class="item"><i class="fas fa-dollar-sign"></i>promotions</a>
+      </div>
+
+
     </sidebar>
 
-    <!-- <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" id="paypalDonate" style="display: none;">
-      <input type="hidden" name="cmd" value="_s-xclick">
-      <input type="hidden" name="hosted_button_id" value="E8QZHGDDUQAGY">
-      <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-      <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-    </form> -->
-    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" id="paypalDonate" v-show="false">
-      <input type="hidden" name="cmd" value="_s-xclick">
-      <input type="hidden" name="hosted_button_id" value="E8QZHGDDUQAGY">
-      <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-      <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-    </form>
 
   </div>
 </template>
@@ -52,8 +47,9 @@ export default {
 
 <style lang="scss">
 #content {
-  margin-top: 5rem;
-  padding-bottom: 5rem;
+  margin-top: 4rem;
+  padding: 2rem 0;
+  background-color: #f2f2f2;
 }
 html {
   font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;

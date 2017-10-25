@@ -1,11 +1,23 @@
 <template lang="html">
-  <div class="App" @click="showPopup">
+  <div :class="{'App': true, 'editing': edit}" @click="showPopup($event, edit)">
     <div class="content" >
-      <div class="title">{{data.title}}</div>
-      <div class="image" :style="{'background-image': 'url(' + link('image') + ')'}"></div>
-      <div class="version">Version: {{data.version}}</div>
-      <a class="ipa button" :href="link('dl')" v-if="data.dl">Download .ipa</a>
-      <a class="signed button" :href="link('signed')" v-if="data.signed">Install Signed</a>
+
+      <div class="title" v-if="!edit">{{data.title}}</div>
+      <div class="image" v-if="!edit" :style="{'background-image': 'url(' + link('image') + ')'}"></div>
+      <div class="version" v-if="!edit">Version: {{data.version}}</div>
+      <a class="ipa button" :href="link('dl')" v-if="data.dl && !edit">Download .ipa</a>
+      <a class="signed button" :href="link('signed')" v-if="data.signed && !edit">Install Signed</a>
+
+
+      <div class="group" v-if="edit" v-for="key in Object.keys(data)">
+        <label>{{key}}</label>
+        <input v-model="data[key]" v-if="key !== 'desc' && key !== 'tags'">
+        <textarea rows="8" cols="80" v-model="data[key]" v-if="key === 'desc'"></textarea>
+        <tags class="input" v-model="data[key]" v-if="key === 'tags'" @tagmodified="tagUpdate"></tags>
+      </div>
+
+      <a class="danger button" v-if="edit">Delete App</a>
+
     </div>
 
     <popup :visible="popupVisible">
@@ -27,18 +39,25 @@
 
 <script>
 import Popup from '~/components/Popup.vue'
+import Tags from '~/components/Tags.vue'
 
 export default {
   components: {
-    Popup
+    Popup,
+    Tags
   },
-  props: ['data'],
+  props: ['data', 'edit'],
   data () {
     return {
       popupVisible: false
     }
   },
   methods: {
+    tagUpdate () {
+      setTimeout(function () {
+        window.dispatchEvent(new Event('resize'))
+      })
+    },
     link (type) {
       var t = this.data[type] || ''
       if (this.data[type] && this.data[type].slice(0, 4) === 'http') return this.data[type]
@@ -48,7 +67,8 @@ export default {
         if (type === 'signed') return this.data[type]
       } else return ''
     },
-    showPopup (e) {
+    showPopup (e, edit = false) {
+      if (edit) return
       console.log(this.link('dl'))
       if (e.target.href) return
       this.popupVisible = !this.popupVisible
@@ -58,6 +78,18 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.group {
+  label {
+    display: block;
+    text-align: left;
+    margin-bottom: 0.2rem;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+  }
+  .input, input, textarea {
+    width: 100%
+  }
+}
 .App {
   $color: #fff;
   background: $color;
@@ -65,6 +97,21 @@ export default {
   border-radius: 4px;
   cursor: pointer;
   transition: all 0.5s;
+  &.editing {
+    border: 3px dashed #607D8B;
+    background: #e6eef7;
+    .input, input, textarea {
+      color: black;
+      border: none;
+      text-align: left;
+      background: #f4f6f9;
+      text-overflow: unset;
+      padding: 1rem;
+      height: auto;
+      font-size: 1rem;
+      resize: none;
+    }
+  }
   &:hover {
     box-shadow: 0px 6px 6px darken($color, 50%);
   }
@@ -91,7 +138,6 @@ export default {
     font-size: 1.6rem;
     padding-bottom: 1rem;
     font-weight: bold;
-    border-bottom:1px solid #ccc
 }
 .button {
   text-decoration: none;
@@ -117,6 +163,16 @@ export default {
 }
 .signed {
   $color: #8bc34a;
+  background: $color;
+  color: white;
+  border-color: darken($color, 10%);
+  text-shadow: 0px 1px darken($color, 20%);
+  &:hover {
+    background: darken($color, 10%);
+  }
+}
+.danger {
+  $color: #F44336;
   background: $color;
   color: white;
   border-color: darken($color, 10%);
