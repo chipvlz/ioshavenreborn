@@ -5,29 +5,34 @@
       <div class="item" v-if="!editing" @click="toggleEdit">
         <i class="fas fa-pencil"></i> Edit
       </div>
+
       <div class="item" v-if="editing" @click="toggleEdit">
         <i class="fas fa-eye"></i> Preview
+      </div>
+
+      <div class="item" v-if="!editing" @click="changeView">
+        <i class="fas fa-eye"></i> View {{changeViewTo}}
       </div>
 
       <div class="item" v-if="editing" @click="createApp">
         <i class="fas fa-plus"></i> Create
       </div>
 
-      <div class="item" v-if="editing">
+      <div class="item" v-if="editing" @click="saveApps('save')">
         <i class="fas fa-save"></i> Save
       </div>
 
-      <div class="item">
+      <div class="item" v-if="editing" @click="saveApps('live')">
         <i class="fas fa-cloud-upload"></i> Go Live
       </div>
 
     </div>
     <div class="search-bar-wrapper align">
-      <searchbar v-on:result="filterApps" v-if="!loading"/>
+      <searchbar v-on:result="filterApps"/>
     </div>
 
     <div :class="{'apps': true, 'align': true, 'loading': searching, 'editing': editing}" id="apps">
-        <app :edit="editing" :data="app" v-for="app in searchResults":key="app.id"/>
+        <app :edit="editing" :data="app" v-for="(app, key) in searchResults":key="app.uid" @remove="removeApp"/>
     </div>
   </div>
 </template>
@@ -37,6 +42,7 @@ import axios from 'axios'
 import App from '~/components/App.vue'
 import Loading from '~/components/Loading.vue'
 import Searchbar from '~/components/Searchbar.vue'
+import random from 'randomatic'
 
 export default {
   components: {
@@ -46,17 +52,51 @@ export default {
   },
   layout: 'default',
   async asyncData ({ params }) {
-    let { data } = await axios.get('http://localhost:4433/api/apps')
+    let { data } = await axios.get('http://localhost:4433/api/apps/saved')
     return { apps: data, searchResults: data }
   },
   data () {
     return {
       loading: true,
       searching: true,
-      editing: false
+      editing: false,
+      changeViewTo: 'live'
     }
   },
   methods: {
+    removeApp (app) {
+      this.loading = true
+      let key = app.title + '#' + app.uid
+      delete this.apps[key]
+      this.filterApps('', true)
+      this.loading = false
+    },
+    changeView () {
+      this.loading = true
+      axios.get('http://localhost:4433/api/apps/' + this.changeViewTo).then(res => {
+        this.apps = this.apps = Object.assign({}, res.data)
+        this.apps = this.searchResults = Object.assign({}, res.data)
+        this.changeViewTo = (this.changeViewTo === 'live') ? 'saved' : 'live'
+        this.filterApps('', true)
+        this.loading = false
+      })
+    },
+    saveApps (mode) {
+      console.log(mode)
+      this.loading = true
+      let obj = {}
+      Object.keys(this.apps).forEach(key => {
+        let app = this.apps[key]
+        if (!app.uid) app.uid = random('0', 4)
+        obj[app.title + '#' + app.uid] = this.apps[key]
+      })
+      this.apps = Object.assign({}, obj)
+      axios.post('http://localhost:4433/api/apps/' + mode, {
+        apps: this.apps
+      }).then(response => {
+        this.loading = false
+      })
+    },
     createApp () {
       let app = {
         title: 'Untitled',
@@ -68,9 +108,10 @@ export default {
         tags: []
       }
       // console.log(this.apps)
-      this.apps['Untitled'] = app
-      this.searchResults['Untitled'] = app
-      this.filterApps({text: 'Untitled'}, true)
+      let uid = random('0', 4)
+      this.apps['untitled#' + uid] = app
+      this.searchResults['untitled#' + uid] = app
+      this.filterApps({text: 'untitled'}, true)
     },
     toggleEdit () {
       this.editing = !this.editing
@@ -158,6 +199,7 @@ export default {
   mounted () {
     // this.loading = true
     window.addEventListener('resize', this.resizeAllGridItems)
+    // window.random = random
     // setTimeout(this.resizeAllGridItems, 10)
     window.onload = function () {
       this.filterApps('', true)

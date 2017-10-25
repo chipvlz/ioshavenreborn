@@ -14,12 +14,10 @@
   },
   "dependencies": {
     "axios": "^0.17.0",
-    "bricks.js": "^1.8.0",
     "discord.js": "^11.2.1",
-    "fs": "0.0.1-security",
-    "masonry-layout": "^4.2.0",
     "nuxt": "^1.0.0-rc11",
-    "vue-input-tag": "0.0.16"
+    "rand-token": "^0.3.0",
+    "randomatic": "^2.0.0"
   },
   "devDependencies": {
     "babel-eslint": "^7.2.3",

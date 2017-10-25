@@ -11,12 +11,12 @@
 
       <div class="group" v-if="edit" v-for="key in Object.keys(data)">
         <label>{{key}}</label>
-        <input v-model="data[key]" v-if="key !== 'desc' && key !== 'tags'">
+        <input v-model="data[key]" v-if="key !== 'desc' && key !== 'tags'" :disabled="key === 'uid'">
         <textarea rows="8" cols="80" v-model="data[key]" v-if="key === 'desc'"></textarea>
         <tags class="input" v-model="data[key]" v-if="key === 'tags'" @tagmodified="tagUpdate"></tags>
       </div>
 
-      <a class="danger button" v-if="edit">Delete App</a>
+      <a class="danger button" v-if="edit" @click="$emit('remove', data)">Delete App</a>
 
     </div>
 
@@ -110,6 +110,10 @@ export default {
       height: auto;
       font-size: 1rem;
       resize: none;
+      &:disabled {
+        color: rgba(0,0,0,0.4);
+        cursor: not-allowed;
+      }
     }
   }
   &:hover {
