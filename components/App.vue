@@ -122,7 +122,8 @@ export default {
   border-color: darken($color, 10%);
   text-shadow: 0px 1px darken($color, 20%);
   &:hover {
-    background: darken($color, 10%);
+    // background: darken($color, 10%);
+    border-bottom-width: 0.4rem;
   }
 }
 .footer .button {

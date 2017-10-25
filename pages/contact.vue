@@ -26,18 +26,18 @@
 
         <div class="group">
           <label>Subject</label>
-          <input type="text" class="field" v-model.trim="general.subject">
+          <input type="text" class="field" v-model.trim="forms[typeOfSub].subject">
         </div>
-        <div class="group" v-if="this[typeOfSub].types">
+        <div class="group" v-if="forms[typeOfSub].types">
           <label>Type</label>
-          <select class="field" v-model.trim="request.type">
+          <select class="field" v-model.trim="forms[typeOfSub].type">
             <option disabled value="">Type of Request</option>
-            <option v-for="t in this[typeOfSub].types">{{t}}</option>
+            <option v-for="t in forms[typeOfSub].types">{{t}}</option>
           </select>
         </div>
         <div class="group">
           <label>Message</label>
-          <textarea rows="8" cols="80" v-model.trim="general.message" class="field"></textarea>
+          <textarea rows="8" cols="80" v-model.trim="forms[typeOfSub].message" class="field"></textarea>
         </div>
       </div>
 
@@ -49,9 +49,9 @@
         <div class="form-align note">
           <strong>Note</strong> All fields are optional and we will never share your information.
         </div>
-        <div class="group" v-for="key in Object.keys(this.contact)">
+        <div class="group" v-for="key in Object.keys(this.forms.contact)">
           <label>{{key}}</label>
-          <input type="text" class="field" v-model.trim="contact[key]">
+          <input type="text" class="field" v-model.trim="forms.contact[key]">
         </div>
       </div>
 
@@ -77,31 +77,33 @@ export default {
       ready: false,
       typeOfSub: '',
       server: '',
-      contact: {
-        'Name': '',
-        'Email': '',
-        'Discord': '',
-        'Twitter': '',
-        'Reddit': ''
-      },
-      general: {
-        color: '#8bc34a',
-        subject: '',
-        message: ''
-      },
-      request: {
-        color: '#9c27b0',
-        subject: '',
-        message: '',
-        type: '',
-        types: ['App', 'Beta', 'Jailbreak', 'Other']
-      },
-      bug: {
-        color: '#f44336',
-        subject: '',
-        message: '',
-        type: '',
-        types: ['App', 'Beta', 'Donating', 'Jailbreak', 'Website', 'Other']
+      forms: {
+        contact: {
+          'Name': '',
+          'Email': '',
+          'Discord': '',
+          'Twitter': '',
+          'Reddit': ''
+        },
+        general: {
+          color: '#8bc34a',
+          subject: '',
+          message: ''
+        },
+        request: {
+          color: '#9c27b0',
+          subject: '',
+          message: '',
+          type: '',
+          types: ['App', 'Beta', 'Jailbreak', 'Other']
+        },
+        bug: {
+          color: '#f44336',
+          subject: '',
+          message: '',
+          type: '',
+          types: ['App', 'Beta', 'Donating', 'Jailbreak', 'Website', 'Other']
+        }
       },
       display: false
     }
@@ -118,7 +120,8 @@ export default {
     formIsValid () {
       if (!this.typeOfSub) return false
       let valid = true
-      let t = this[this.typeOfSub]
+      let t = this.forms[this.typeOfSub]
+      // console.log(this.$data)
       Object.keys(t).forEach(key => {
         if (!t[key]) valid = false
       })
@@ -133,7 +136,7 @@ export default {
     submitForm () {
       this.submitting = true
       let embed = new window.Discord.RichEmbed()
-      let t = this[this.typeOfSub]
+      let t = this.forms[this.typeOfSub]
       embed.setColor(t.color)
       embed.setTitle('[' + this.typeOfSub + '] ' + t.subject.toUpperCase())
       embed.setDescription(t.message)
@@ -141,8 +144,9 @@ export default {
       embed.addField('\u200B', '\u200B', false)
       embed.addField('\u200B', '--- Contact Info ---', false)
 
-      Object.keys(this.contact).forEach(key => {
-        embed.addField(key, this.contact[key], true)
+      let c = this.forms.contact
+      Object.keys(c).forEach(key => {
+        if (c[key]) embed.addField(key, c[key], true)
       })
       embed.setFooter('sent via https://ioshaven.co/contact')
       this.server.send('', embed).then(res => {
