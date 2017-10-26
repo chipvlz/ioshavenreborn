@@ -1,7 +1,7 @@
 <template>
   <div>
     <nuxt id="content"/>
-    <sidebar color="#009688" title="iOS Haven">
+    <sidebar color="#F44336" title="iOS Haven">
       <a href="/" class="item"><i class="fas fa-home"></i>home</a>
       <a href="#" @click="donate" class="item"><i class="fab fa-paypal"></i>donate</a>
       <a href="/apps" class="item"><i class="fab fa-app-store"></i>apps</a>
@@ -72,18 +72,18 @@ html {
   margin: 0;
 }
 
-.button--green {
+.button--red {
   display: inline-block;
   border-radius: 4px;
-  border: 1px solid #3b8070;
-  color: #3b8070;
+  border: 1px solid darken(#F44336, 7%);
+  color: #F44336;
   text-decoration: none;
   padding: 10px 30px;
 }
 
-.button--green:hover {
+.button--red:hover {
   color: #fff;
-  background-color: #3b8070;
+  background-color: darken(#F44336, 7%);
 }
 
 .button--grey {

@@ -9,7 +9,7 @@
         Download IPAS, signed apps, apple developer betas, and Jailbreaks.
       </h2>
       <div class="links">
-        <a href="#main-side-bar" class="button--green" @click="showSide">Launch</a>
+        <a href="#main-side-bar" class="button--red" @click="showSide">Launch</a>
         <a href="#" class="button--grey" @click="donate">Donate</a>
       </div>
     </div>
@@ -35,6 +35,10 @@ export default {
 </script>
 
 <style>
+#content {
+  margin: 0;
+  padding: 0;
+}
 .container {
   min-height: 100vh;
   display: flex;

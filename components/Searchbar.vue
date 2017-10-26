@@ -60,7 +60,7 @@ $placeholder-color: lighten($search-color, 30%);
 }
 .checkbox {
     display: flex;
-    padding: 10px;
+    padding: 0.5rem;
     align-items: center;
     justify-content: center;
     color: black;
@@ -73,11 +73,11 @@ $placeholder-color: lighten($search-color, 30%);
     user-select: none;
     div{
       border: 1px solid black;
-      padding: 12px;
+      padding: 0.5rem;
       display: inline-block;
       border-radius: 500rem;
       background: white;
-      margin-right: 10px;
+      margin-right: 0.3rem;
       transition: all 1s;
     }
 
