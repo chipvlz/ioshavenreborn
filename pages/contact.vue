@@ -2,18 +2,18 @@
   <div class="">
     <loading v-if="!ready"/>
 
-    <div class="Contact-Page" v-if="ready">
+    <div class="grid grid-align" v-if="ready">
 
       <!-- S E L E C T   F O R M S -->
-      <div class="types" v-if="!typeOfSub">
-        <div class="heading full">What would you like to contact us about?</div>
+      <div class="types fullwidth" v-if="!typeOfSub">
+        <div class="heading fullwidth">What would you like to contact us about?</div>
         <div class="type general" @click="changeType('general')">General</div>
         <div class="type request" @click="changeType('request')">Request</div>
         <div class="type bug" @click="changeType('bug')">Bug</div>
       </div>
 
       <!-- M A I N   F O R M S -->
-      <div class="form" v-if="typeOfSub">
+      <div class="form fullwidth" v-if="typeOfSub">
         <div class="heading capitalize">{{typeOfSub}} form
           <div class="button" @click="changeType('')">Change form</div>
         </div>
@@ -42,7 +42,7 @@
       </div>
 
       <!-- C O N T A C T   F O R M -->
-      <div class="form contact" v-if="typeOfSub && contactBack">
+      <div class="form contact fullwidth" v-if="typeOfSub && contactBack">
         <div class="heading">Contact Me
           <div class="button" @click="contactBack = false">Nevermind!</div>
         </div>
@@ -56,8 +56,8 @@
       </div>
 
       <!-- S U M I T   B U T T O N S -->
-      <button class="button form-align submit" v-if="typeOfSub && !formIsValid" disabled>Submit</button>
-      <button class="button form-align submit" @click="submitForm" v-if="typeOfSub && formIsValid">Submit</button>
+      <button class="button fullwidth submit" v-if="typeOfSub && !formIsValid" disabled>Submit</button>
+      <button class="button fullwidth submit" @click="submitForm" v-if="typeOfSub && formIsValid">Submit</button>
     </div>
 
   </div>
@@ -167,7 +167,7 @@ export default {
     max-width: 960px;
     border: 1px solid;
     padding: 1rem;
-    grid-gap: 1rem;
+    grid-gap: 0.5rem;
     margin: 1rem auto;
     grid-template-columns: repeat(3, 1fr);
     grid-row: 2;
@@ -181,8 +181,7 @@ export default {
     padding: 1rem 0;
     border: 1px solid;
     text-align: center;
-    font-size: 1.5rem;
-    letter-spacing: 0.1rem;
+    font-size: 1.2rem;
     font-weight: 200;
     &:hover {color: white; cursor: pointer;}
     &.general:hover{
@@ -196,17 +195,12 @@ export default {
     }
 }
 
-.form, .form-align {
-  display: block;
-  max-width: 960px;
-  width: 100%;
-  margin: auto;
-}
+
 .form {
     border: 1px solid;
     padding: 1rem;
-    margin: 1rem auto;
     box-sizing: border-box;
+    background: white;
 }
 
 .heading {
@@ -267,7 +261,8 @@ export default {
     font-size: 1.5rem;
     padding: 1rem;
     width: 100%;
-    background: white;
+    background: #f2f2f2;
+    border: 1px solid #666;
     @media screen and (max-width: 575px){
       grid-row: 2;
       grid-column: span 2;

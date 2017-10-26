@@ -96,12 +96,14 @@ export default {
 .button {
   text-decoration: none;
   display: block;
-  padding: 1rem;
-  border: 1px solid;
-  border-radius: 4px;
+  padding: 1.5rem;
+  border: 0.06rem solid;
+  border-radius: .5rem;
   outline: none !important;
   font-weight: bold;
   font-size: 1.1rem;
+  position: relative;
+  border-bottom-width: 0.2625rem;
 }
 
 
@@ -109,21 +111,28 @@ export default {
   $color: #2196f3;
   background: $color;
   color: white;
-  border-color: darken($color, 10%);
+  border-color: darken($color, 15%);
   text-shadow: 0px 1px darken($color, 20%);
+  transition: all 0.5s;
   &:hover {
-    background: darken($color, 10%);
+    background: darken($color, 7%);
+  }
+  &:focus {
+    border-width: 0.06rem;
   }
 }
 .signed {
   $color: #8bc34a;
   background: $color;
   color: white;
-  border-color: darken($color, 10%);
+  border-color: darken($color, 15%);
   text-shadow: 0px 1px darken($color, 20%);
+  transition: all 0.5s;
   &:hover {
-    // background: darken($color, 10%);
-    border-bottom-width: 0.4rem;
+    background: darken($color, 7%);
+  }
+  &:focus {
+    border-width: 0.06rem;
   }
 }
 .footer .button {

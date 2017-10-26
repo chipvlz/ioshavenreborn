@@ -1,9 +1,26 @@
 .heading {
-font-size: 1.5rem;
+  font-size: 2.5rem;
+  margin: 3rem 0 2rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #ccc;
 }
 
-.section {
-
+ul.fancy, ol.fancy {
+  padding: 0;
+  border: 1px solid #ccc;
+  border-radius: 0.4rem;
+  background: white;
+  li {
+    list-style: none;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #ccc;
+    flex-wrap: wrap;
+    &:last-of-type {
+      border: none;
+    }
+  }
 }
 .center {
   text-align: center;
@@ -40,7 +57,4 @@ font-size: 1.5rem;
 }
 .fullwidth {
   grid-column: span 5;
-}
-a {
-  display: block;
 }

@@ -71,14 +71,14 @@ $placeholder-color: lighten($search-color, 30%);
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-
     div{
       border: 1px solid black;
       padding: 12px;
       display: inline-block;
-      border-radius: 50%;
+      border-radius: 500rem;
       background: white;
       margin-right: 10px;
+      transition: all 1s;
     }
 
     .selected {

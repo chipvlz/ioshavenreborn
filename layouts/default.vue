@@ -5,8 +5,8 @@
       <a href="/" class="item"><i class="fas fa-home"></i>home</a>
       <a href="#" @click="donate" class="item"><i class="fab fa-paypal"></i>donate</a>
       <a href="/apps" class="item"><i class="fab fa-app-store"></i>apps</a>
-      <a href="#" class="item"><i class="fas fa-flask"></i>betas</a>
-      <a href="#" class="item"><i class="fas fa-user-secret"></i>jailbreaks</a>
+      <a href="betas" class="item"><i class="fas fa-flask"></i>betas</a>
+      <a href="/jailbreaks" class="item"><i class="fas fa-user-secret"></i>jailbreaks</a>
       <a href="/cydia_impactor" class="item"><i class="fas fa-wrench"></i>cydia impactor</a>
       <a href="/contact" class="item"><i class="fas fa-bug"></i>Contact Developer</a>
       <a href="https://discord.gg/mTbwMyQ" class="item"><i class="fab fa-discord"></i>join our discord</a>
@@ -50,6 +50,7 @@ export default {
 
 
 <style lang="scss">
+@import "~assets/main.scss";
 #content {
   margin-top: 5rem;
   padding-bottom: 5rem;
@@ -63,6 +64,7 @@ html {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
+  background: #f2f2f2;
 }
 
 *, *:before, *:after {
