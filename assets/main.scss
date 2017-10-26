@@ -1,31 +1,46 @@
-.center-head {
-  text-align: center;
-  font-size: 2rem;
-}
-.center-body {
-  text-align: center;
-}
-.margin-downloads {
-  margin-left: 10rem;
-}
-.margins-howto {
-  margin-left: 10rem;
-}
-.margin-errors{
-  margin-left: 10rem;
-  text-decoration: none;
-  color: black;
-}
-a.margin-errors:hover {
-  color: blue;
-  text-decoration: underline;
-}
-.fontawesome {
-  font-size: 1.5rem;
-  text-decoration: none;
-  color: none;
+.heading {
+font-size: 1.5rem;
 }
 
-.no-underline {
-  text-decoration: none
+.section {
+
+}
+.center {
+  text-align: center;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-gap: 1rem;
+}
+
+.grid-align {
+  max-width: 960px;
+  margin: auto;
+  @media screen and (max-width: 575px){
+    grid-template-columns: repeat(1, 1fr);
+    max-width: 350px;
+  }
+  @media screen and (min-width: 576px) and (max-width: 767px) {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 576px;
+  }
+  @media screen and (min-width: 768px) and (max-width: 1099px) {
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 768px;
+  }
+  @media screen and (min-width: 1100px) and (max-width: 1399px) {
+    grid-template-columns: repeat(4, 1fr);
+    max-width: 1100px;
+  }
+  @media screen and (min-width: 1400px) {
+    grid-template-columns: repeat(5, 1fr);
+    max-width: 1400px;
+  }
+}
+.fullwidth {
+  grid-column: span 5;
+}
+a {
+  display: block;
 }
