@@ -14,12 +14,11 @@
         <span v-html="data.desc" class="markdown-body"></span>
       </div>
       <div class="footer">
-        <span></span>
+        <span class="version">Version: {{data.version}}</span>
         <span id="popup-button-wrapper">
-          <a class="ipa button" :href="link('dl')" v-if="data.dl">Download .ipa</a>
-          <a class="signed button" :href="link('signed')" v-if="data.signed">Install Signed</a>
+          <a class="ipa button smaller" :href="link('dl')" v-if="data.dl">Download .ipa</a>
+          <a class="signed button smaller" :href="link('signed')" v-if="data.signed">Install Signed</a>
         </span>
-
       </div>
     </popup>
   </div>
@@ -104,6 +103,11 @@ export default {
   font-size: 1.1rem;
   position: relative;
   border-bottom-width: 0.2625rem;
+  &.smaller {
+    padding: 0.5rem;
+    display: inline-flex;
+    align-items: center;
+  }
 }
 
 
@@ -136,13 +140,17 @@ export default {
   }
 }
 .footer .button {
-  display: inline-block;
+  // display: inline-block;
   margin-left: 0.5rem;
   font-size: 0.9rem;
+}
+.version {
+  opacity: 0.6;
+  font-size: 0.7rem;
 }
 #popup-button-wrapper{
   display: flex;
 }
-#version{font-size: 0.5rem}
+// #version{font-size: 0.5rem}
 
 </style>

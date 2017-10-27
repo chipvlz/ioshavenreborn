@@ -104,7 +104,8 @@ export default {
 .menu.translate{
   bottom: 0;
   right: -400px;
-  transition: right 0.5s;
+  opacity: 0;
+  transition: all 0.5s;
 }
 .menu.visible{
   bottom: 0;
@@ -112,6 +113,10 @@ export default {
   right: -3rem;
   overflow-y: scroll;
   transition: right 0.5s;
+  opacity: 1;
+  @media screen and (max-width: 575px){
+    width: 350px;
+  }
 }
 
 .item {

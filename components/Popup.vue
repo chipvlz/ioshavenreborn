@@ -1,7 +1,7 @@
 <template lang="html">
   <div class="Popup" v-show="isVisible">
     <div class="background"></div>
-    <div class="grid">
+    <div class="window">
       <div class="content">
         <div class="toggle header" v-on:click="isVisible = !isVisible">
           CLOSE <i class="fal fa-times"></i>
@@ -40,22 +40,31 @@ export default {
     background: rgba(0,0,0,0.5);
     z-index: 201;
 }
-.grid {
-    position: fixed;
-    top: 2rem;
-    left: 0;
-    right: 0;
-    z-index: 201;
-    padding: 0 1rem;
+.window {
+  position: fixed;
+  top: 2rem;
+  left: 0;
+  right: 0;
+  z-index: 201;
+  padding: 0 1rem;
 }
+// .grid {
+//     position: fixed;
+//     top: 2rem;
+//     left: 0;
+//     right: 0;
+//     z-index: 201;
+//     padding: 0 1rem;
+// }
 .content {
     background: white;
-    max-width: 960px;
+    width: 100%;
     margin: auto;
     padding: 2rem 1rem 1rem;
     border: 1px solid;
     border-radius: 4px;
     position: relative;
+    max-width: 960px;
 }
 .header, .footer {
     font-size: 1.5rem;
@@ -95,5 +104,6 @@ export default {
   border-bottom: none;
   border-top: 1px solid;
   justify-content: space-between;
+  height: 4rem;
 }
 </style>

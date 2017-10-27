@@ -10,9 +10,27 @@
   </div>
   <div class="section fullwidth">
     <div class="heading">
-      Download Cydia Impactor Here:
+      Downloads
     </div>
-    <div class="grid center">
+    <ul class="fancy">
+      <li>
+        <span><i class="fab fa-apple mr5"></i>Mac OS X</span>
+        <span><a href="https://cydia.saurik.com/api/latest/1">Download</a></span>
+      </li>
+      <li>
+        <span><i class="fab fa-windows mr5"></i>Windows</span>
+        <span><a href="https://cydia.saurik.com/api/latest/2">Download</a></span>
+      </li>
+      <li>
+        <span><i class="fab fa-linux mr5"></i>Linux (32-bit)</span>
+        <span><a href="https://cydia.saurik.com/api/latest/4">Download</a></span>
+      </li>
+      <li>
+        <span><i class="fab fa-linux mr5"></i>Linux (64-bit)</span>
+        <span><a href="https://cydia.saurik.com/api/latest/5">Download</a></span>
+      </li>
+    </ul>
+    <!-- <div class="grid center">
       <a href="https://cydia.saurik.com/api/latest/1">
           <i class="fab fa-apple fontawesome"></i>Mac OS X
       </a>
@@ -25,50 +43,93 @@
       <a href="https://cydia.saurik.com/api/latest/5">
           <i class="fab fa-linux fontawesome"></i>Linux (64-bit)
       </a>
-    </div>
+    </div> -->
   </div>
   <div class="section fullwidth">
     <div class="heading">
-      How To Install An .IPA File
+      Install An .IPA File
     </div>
-    <div>
-      <ol>
-        <li>Make sure you have the lastest version of iTunes installed on your computer.</li>
-        <li>Download the .ipa file of your choice from <a href="/apps">THIS</a> page.</li>
-        <li>Download Cydia Impactor from the links above.</li>
-        <li>Extract the Impactor ZIP file and run the program labeled 'Impactor'.</li>
-        <li>Connect your iDevice to your computer.</li>
-        <p>NOTE: Make sure your iDevice is recognized by your computer.</p>
-        <li>Open Cydia Impactor and drag the .ipa file you downloaded into the GUI window.</li>
-        <li>Enter your Apple ID email into the field provided and click 'OK'.</li>
-        <li>Enter your Apple ID password into the field provided and click 'OK'.</li>
-        <p>NOTE: Your Apple ID is only used to generate a certificate from Apple and is not saved anywhere.</p>
-        <li>Wait for Cydia Impactor to sign the .ipa file.</li>
-        <p>NOTE: Wait to proceed until you see the 'Complete' message at the bottom of the program.</p>
-        <li>Unlock your device and go to Settings > General > Profiles and Device Management.</li>
-        <li>Open the profile with your Apple ID email on it and click 'Trust' "your@email.com."</li>
-        <li>Go back to your homescreen and lauch the app or game that you downloaded.</li>
-        <p>You will have to repeat this process every 7 days unless you get a codesigning service.</p>
-      </ol>
-    </div>
+
+    <ol class="neat">
+      <li>Make sure you have the lastest version of iTunes installed on your computer.</li>
+      <li>Download the .ipa file of your choice from <a href="/apps">THIS</a> page.</li>
+      <li>Download Cydia Impactor from the links above.</li>
+      <li>Extract the Impactor ZIP file and run the program labeled 'Impactor'.</li>
+      <li>Connect your iDevice to your computer.</li>
+      <p>NOTE: Make sure your iDevice is recognized by your computer.</p>
+      <li>Open Cydia Impactor and drag the .ipa file you downloaded into the GUI window.</li>
+      <li>Enter your Apple ID email into the field provided and click 'OK'.</li>
+      <li>Enter your Apple ID password into the field provided and click 'OK'.</li>
+
+      <div class="note">
+        NOTE: Your Apple ID is only used to generate a certificate from Apple and is not saved anywhere.
+      </div>
+
+      <li>Wait for Cydia Impactor to sign the .ipa file.</li>
+      <div class="note">
+        NOTE: Wait to proceed until you see the 'Complete' message at the bottom of the program.
+      </div>
+      <li>Unlock your device and go to Settings > General > Profiles and Device Management.</li>
+      <li>Open the profile with your Apple ID email on it and click 'Trust' "your@email.com."</li>
+      <li>Go back to your homescreen and lauch the app or game that you downloaded.</li>
+      <p>You will have to repeat this process every 7 days unless you get a codesigning service.</p>
+    </ol>
+
   </div>
   <div class="section fullwidth">
     <div class="heading">
-      Common Errors With Cydia Impactor
+      Common Errors
     </div>
-    <div>
-      <ul>
-        <li><a href="http://www.iphonehacks.com/2017/07/fix-provision-cpp168-error-cydia-impactor-yalu-jailbreak-10-2.html">Fix the "provision.cpp:168" error.</a></li>
+    <ul class="fancy">
+      <li>
+        <a href="http://www.iphonehacks.com/2017/07/fix-provision-cpp168-error-cydia-impactor-yalu-jailbreak-10-2.html">
+          Provision.cpp:168
+        </a>
+      </li>
 
-        <li><a href="http://www.iblogapple.com/2017/03/12/fix-provision-cpp-71-error-cydia-impactor/">Fix the "provision.cpp:71" and "provision.cpp:81" errors.</a></li>
+      <li>
+        <a href="http://www.iblogapple.com/2017/03/12/fix-provision-cpp-71-error-cydia-impactor/">
+          Provision.cpp:71
+        </a>
+      </li>
 
-        <li><a href="https://techjourney.net/cydia-impactor-provision-cpp6268150-error/">Fix the "provision.cpp:62", "provision.cpp:68", and "provision.cpp:150" errors.</a></li>
+      <li>
+        <a href="http://www.iblogapple.com/2017/03/12/fix-provision-cpp-71-error-cydia-impactor/">
+          Provision.cpp:81
+        </a>
+      </li>
 
-        <li><a href="https://yalujailbreak.net/lockdown-cpp-57-error/">Fix the "lockdown.cpp:57" error.</a></li>
+      <li>
+        <a href="https://techjourney.net/cydia-impactor-provision-cpp6268150-error/">
+          Provision.cpp:62.
+        </a>
+      </li>
 
-        <li><a href="http://www.iblogapple.com/2017/03/11/cydia-impactor-update-fix-http-win-cpp-158-error/">Fix the "http-win.cpp:158" error.</a></li>
-      </ul>
-    </div>
+      <li>
+        <a href="https://techjourney.net/cydia-impactor-provision-cpp6268150-error/">
+          Provision.cpp:68
+        </a>
+      </li>
+
+      <li>
+        <a href="https://techjourney.net/cydia-impactor-provision-cpp6268150-error/">
+          Provision.cpp:150
+        </a>
+      </li>
+
+      <li>
+        <a href="https://yalujailbreak.net/lockdown-cpp-57-error/">
+          Lockdown.cpp:57
+        </a>
+      </li>
+
+      <li>
+        <a href="http://www.iblogapple.com/2017/03/11/cydia-impactor-update-fix-http-win-cpp-158-error/">
+          Http-win.cpp:158
+        </a>
+      </li>
+
+    </ul>
   </div>
 </div>
 </template>

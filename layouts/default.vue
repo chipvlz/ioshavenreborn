@@ -65,6 +65,13 @@ html {
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
   background: #f2f2f2;
+  @media screen and (max-width: 400px){
+    font-size: 12px;
+  }
+}
+
+body {
+  padding: 0 1rem;
 }
 
 *, *:before, *:after {

@@ -235,16 +235,7 @@ export default {
     }
 }
 
-.note {
-    font-size: 1rem;
-    color: #666;
-    font-weight: 100;
-    padding-left: 1rem;
-    border-left: 5px solid gold;
-    background: cornsilk;
-    padding: 1rem;
-    margin: 1rem auto;
-}
+
 .form .group {
   display: grid;
   grid-template-columns: 100px auto;
