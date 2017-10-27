@@ -2,15 +2,16 @@
   <div>
     <nuxt id="content"/>
     <sidebar color="#F44336" title="iOS Haven">
-      <a href="/" class="item"><i class="fas fa-home"></i>home</a>
-      <a href="#" @click="donate" class="item"><i class="fab fa-paypal"></i>donate</a>
-      <a href="/apps" class="item"><i class="fab fa-app-store"></i>apps</a>
-      <a href="betas" class="item"><i class="fas fa-flask"></i>betas</a>
-      <a href="/jailbreaks" class="item"><i class="fas fa-user-secret"></i>jailbreaks</a>
-      <a href="/cydia_impactor" class="item"><i class="fas fa-wrench"></i>cydia impactor</a>
+      <a href="/" class="item"><i class="fas fa-home"></i>Home</a>
+      <a href="#" @click="donate" class="item"><i class="fab fa-paypal"></i>Donate</a>
+      <a href="/apps" class="item"><i class="fab fa-app-store"></i>Apps</a>
+      <a href="betas" class="item"><i class="fas fa-flask"></i>Betas</a>
+      <a href="/jailbreaks" class="item"><i class="fas fa-user-secret"></i>Jailbreaks</a>
+      <a href="/cydia_impactor" class="item"><i class="fas fa-wrench"></i>Cydia Impactor</a>
       <a href="/contact" class="item"><i class="fas fa-bug"></i>Contact Developer</a>
       <a href="/credits" class="item"><i class="fas fa-code"></i>Credits</a>
-      <a href="https://discord.gg/mTbwMyQ" class="item"><i class="fab fa-discord"></i>join our discord</a>
+      <a href="https://discord.gg/mTbwMyQ" class="item"><i class="fab fa-discord"></i>Join our Discord</a>
+      <a href="https://www.reddit.com/r/iOSHaven/" class="item"><i class="fab fa-reddit"></i>Join our subreddit</a>
     </sidebar>
 
     <!-- <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" id="paypalDonate" style="display: none;">

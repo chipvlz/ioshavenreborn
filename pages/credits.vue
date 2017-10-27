@@ -32,6 +32,32 @@
     </ul>
   </div>
 
+  <div class="section fullwidth">
+    <div class="heading">
+      App Providers
+    </div>
+    <div>
+      <ul class="fancy">
+        <li>Emus4<a href="https://twitter.com/Emus4you" target="_blank">Twitter</a></li>
+        <li>IraqStore<a href="https://ir4q.store" target="_blank">Twitter</a></li>
+        <li>AppValley<a href="https://twitter.com/appvalley_vip" target="_blank">Twitter</a></li>
+        <li>Hassan Abdullah<a href="https://twitter.com/kakaswr22" target="_blank">Twitter</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section fullwidth">
+    <div class="heading">
+      Jailbreak Developers
+    </div>
+    <div>
+      <ul class="fancy">
+        <li>qwertyoruiopz | yalu102<a href="https://twitter.com/qwertyoruiopz" target="_blank">Twitter</a></li>
+        <li>Ian Beer | extra_recipe</li>
+      </ul>
+    </div>
+  </div>
+
 </div>
 </template>
 
