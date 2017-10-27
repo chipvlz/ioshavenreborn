@@ -9,6 +9,7 @@
       <a href="/jailbreaks" class="item"><i class="fas fa-user-secret"></i>jailbreaks</a>
       <a href="/cydia_impactor" class="item"><i class="fas fa-wrench"></i>cydia impactor</a>
       <a href="/contact" class="item"><i class="fas fa-bug"></i>Contact Developer</a>
+      <a href="/credits" class="item"><i class="fas fa-code"></i>Credits</a>
       <a href="https://discord.gg/mTbwMyQ" class="item"><i class="fab fa-discord"></i>join our discord</a>
     </sidebar>
 
