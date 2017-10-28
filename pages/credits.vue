@@ -5,9 +5,10 @@
         iOS Haven Staff
     </div>
       <ul class="fancy bigger">
-        <li>Zeb - Backend &amp; Frontend Developer<a href="https://twitter.com/gfxrrr" target="_blank"><i class="fab fa-twitter"></i></a></li>
-        <li>Zack - Backend &amp; IPA Developer<a href="https://twitter.com/_ZackBz" target="_blank"><i class="fab fa-twitter"></i></a></li>
+        <li>Zeb - Fullstack Developer<a href="https://twitter.com/gfxrrr" target="_blank"><i class="fab fa-twitter"></i></a></li>
+        <li>Zack - Backend Developer<a href="https://twitter.com/_ZackBz" target="_blank"><i class="fab fa-twitter"></i></a></li>
         <li>Zane - IPA Devleoper<a href="https://twitter.com/ZaneDevs" target="_blank"><i class="fab fa-twitter"></i></a></li>
+        <li>Riggy - Discord Server Mod</li>
       </ul>
   </div>
 
@@ -19,7 +20,7 @@
       <li>UnlimApps | ++ Tweaks<a href="https://twitter.com/unlimapps" target="_blank"><i class="fab fa-twitter"></i></a></li>
       <li>Majd Alfhaily | Instagram Rocket &amp; Cercube<a href="https://twitter.com/freemanrepo" target="_blank"><i class="fab fa-twitter"></i></a></li>
       <li>CokePokes | Phantom for Snapchat<a href="https://twitter.com/CokePokes" target="_blank"><i class="fab fa-twitter"></i></a></li>
-      <li>Othman Alomiry | Snapchat SCOthman</li>
+      <li>Othman Alomiry | Snapchat SCOthman<a href="https://twitter.com/OthmanAl3miry" target="_blank"><i class="fab fa-twitter"></i></a></li>
       <li>Pokego++ | Pokego++<a href="https://twitter.com/OfficialPokeGo2?lang=en" target="_blank"><i class="fab fa-twitter"></i></a></li>
       <li>Bobby Movie &amp; Bobby Music<a href="https://twitter.com/bobbymovie" target="_blank"><i class="fab fa-twitter"></i></a></li>
       <li>Playbox | CinemaBox PB<a href="https://twitter.com/playbox_hd" target="_blank"><i class="fab fa-twitter"></i></a></li>
