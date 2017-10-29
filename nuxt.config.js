@@ -19,10 +19,19 @@ module.exports = {
       { rel: 'stylesheet', href:'/markdown.css'}
     ],
     script: [
-      {type: 'text/javascript', 'src':'discord.min.js'}
+      {type: 'text/javascript', 'src':'discord.min.js'},
+      {async: '', src: '//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'},
+      {type: 'text/javascript', 'src':'adsenseconfig.js'},
     ]
   },
   /*
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-4649450952406116",
+    enable_page_level_ads: true
+  });
+</script>
   ** Global CSS
   */
   // css: ['~/assets/css/main.css'],
