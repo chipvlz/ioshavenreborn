@@ -110,9 +110,10 @@ export default {
   },
   mounted () {
     const client = new window.Discord.Client()
-    client.login('MzA2ODU5OTgwMDMwNzM4NDQy.DNDp4w.M8MOcOHY6lBAFqxS5AzItZI_WC0')
+    client.login('MzcxODM5MDY1NTU5MTM4MzA1.DNbMKw.IEOg7hoUE2iyUyiZ2xaboy9kneU')
     client.on('ready', () => {
-      this.server = client.channels.find('name', 'general')
+      this.server = client.channels.find('name', 'contact-requests')
+      window.a = this.server
       this.ready = true
     })
   },

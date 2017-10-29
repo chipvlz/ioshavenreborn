@@ -14,20 +14,20 @@
 
   <div class="section fullwidth">
     <div class="heading">
-      App Providers
+      App Developers
     </div>
     <ul class="fancy bigger">
       <li>UnlimApps | ++ Tweaks<a href="https://twitter.com/unlimapps" target="_blank"><i class="fab fa-twitter"></i></a></li>
-      <li>Majd Alfhaily | Instagram Rocket &amp; Cercube<a href="https://twitter.com/freemanrepo" target="_blank"><i class="fab fa-twitter"></i></a></li>
+      <li>Majd Alfhaily | IG Rocket &amp; Cercube<a href="https://twitter.com/freemanrepo" target="_blank"><i class="fab fa-twitter"></i></a></li>
       <li>CokePokes | Phantom for Snapchat<a href="https://twitter.com/CokePokes" target="_blank"><i class="fab fa-twitter"></i></a></li>
       <li>Othman Alomiry | Snapchat SCOthman<a href="https://twitter.com/OthmanAl3miry" target="_blank"><i class="fab fa-twitter"></i></a></li>
-      <li>Pokego++ | Pokego++<a href="https://twitter.com/OfficialPokeGo2?lang=en" target="_blank"><i class="fab fa-twitter"></i></a></li>
+      <li>Pokego++ | Pokego++<a href="https://pokego2.com/" target="_blank"><i class="fal fa-globe"></i></a></li>
       <li>Bobby Movie &amp; Bobby Music<a href="https://twitter.com/bobbymovie" target="_blank"><i class="fab fa-twitter"></i></a></li>
       <li>Playbox | CinemaBox PB<a href="https://twitter.com/playbox_hd" target="_blank"><i class="fab fa-twitter"></i></a></li>
-      <li>Popcorn Time | Popcorn Time<a href="https://popcorn-time.to/" target="_blank"><i class="fab fa-twitter"></i></a> </li>
+      <li>Popcorn Time | Popcorn Time<a href="https://popcorn-time.to/" target="_blank"><i class="fal fa-globe"></i></a> </li>
       <li>EveryCord | EveryCord<a href="https://twitter.com/everycord" target="_blank"><i class="fab fa-twitter"></i></a></li>
-      <li>F.lux | F.lux<a href="https://justgetflux.com/" target="_blank"><i class="fab fa-twitter"></i></a></li>
-      <li>Ivano Bilenchi | iCleaner<a href="https://ib-soft.net/" target="_blank"><i class="fab fa-twitter"></i></a></li>
+      <li>F.lux | F.lux<a href="https://justgetflux.com/" target="_blank"><i class="fal fa-globe"></i></a></li>
+      <li>Ivano Bilenchi | iCleaner<a href="https://ib-soft.net/" target="_blank"><i class="fal fa-globe"></i></a></li>
       <li>iDarkmode | iDarkmode<a href="https://twitter.com/idarkmode" target="_blank"><i class="fab fa-twitter"></i></a></li>
       <li>MasonD3V | iTD App<a href="https://twitter.com/MasonD3V" target="_blank"><i class="fab fa-twitter"></i></a></li>
     </ul>
@@ -40,7 +40,7 @@
     <div>
       <ul class="fancy bigger">
         <li>Emus4<a href="https://twitter.com/Emus4you" target="_blank"><i class="fab fa-twitter"></i></a></li>
-        <li>IraqStore<a href="https://ir4q.store" target="_blank"><i class="fab fa-twitter"></i></a></li>
+        <li>IraqStore<a href="https://ir4q.store" target="_blank"><i class="fal fa-globe"></i></a></li>
         <li>AppValley<a href="https://twitter.com/appvalley_vip" target="_blank"><i class="fab fa-twitter"></i></a></li>
         <li>Hassan Abdullah<a href="https://twitter.com/kakaswr22" target="_blank"><i class="fab fa-twitter"></i></a></li>
       </ul>

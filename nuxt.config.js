@@ -3,7 +3,7 @@ module.exports = {
   ** Headers of the page
   */
   head: {
-    title: 'test',
+    title: 'starter',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -21,21 +21,21 @@ module.exports = {
     script: [
       {type: 'text/javascript', 'src':'discord.min.js'}
     ]
-
   },
   /*
-  ** Customize the progress bar color
+  ** Global CSS
   */
-  loading: { color: '#3B8070' },
+  // css: ['~/assets/css/main.css'],
   /*
-  ** Build configuration
+  ** Add axios globally
   */
   build: {
+    vendor: ['axios'],
     /*
-    ** Run ESLint on save
+    ** Run ESLINT on save
     */
     extend (config, ctx) {
-      if (ctx.dev && ctx.isClient) {
+      if (ctx.isClient) {
         config.module.rules.push({
           enforce: 'pre',
           test: /\.(js|vue)$/,

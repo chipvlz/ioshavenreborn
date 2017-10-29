@@ -7,7 +7,7 @@
       <a href="/apps" class="item"><i class="fab fa-app-store"></i>Apps</a>
       <a href="betas" class="item"><i class="fas fa-flask"></i>Betas</a>
       <a href="/jailbreaks" class="item"><i class="fas fa-user-secret"></i>Jailbreaks</a>
-      <a href="/cydia_impactor" class="item"><i class="fas fa-wrench"></i>Cydia Impactor</a>
+      <a href="/cydia" class="item"><i class="fas fa-wrench"></i>Cydia Impactor</a>
       <a href="/contact" class="item"><i class="fas fa-bug"></i>Contact Developer</a>
       <a href="/credits" class="item"><i class="fas fa-code"></i>Credits</a>
       <a href="https://discord.gg/mTbwMyQ" class="item"><i class="fab fa-discord"></i>Join our Discord</a>
