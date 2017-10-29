@@ -188,20 +188,7 @@ module.exports = {
     { rel: 'stylesheet', href: '/fa/css/fontawesome-pro-brands.css' }, { rel: 'stylesheet', href: '/fa/css/fontawesome-pro-solid.css' }, { rel: 'stylesheet', href: '/fa/css/fontawesome-pro-light.css' }, { rel: 'stylesheet', href: '/fa/css/fontawesome-pro-regular.css' }, { rel: 'stylesheet', href: '/fa/css/fontawesome-pro-core.css' }, { rel: 'stylesheet', href: '/markdown.css' }, { rel: 'apple-touch-icon', sizes: '180x180', href: '/favicons/apple-touch-icon.png?v=QEMYzE9pb35555' }, { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicons/favicon-32x32.png?v=QEMYzE9pb35555' }, { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicons/favicon-16x16.png?v=QEMYzE9pb35555' }, { rel: 'manifest', href: '/favicons/manifest.json?v=QEMYzE9pb35555' }, { rel: 'mask-icon', href: '/favicons/safari-pinned-tab.svg?v=QEMYzE9pb35555', color: '#e81e1e' }, { rel: 'shortcut icon', href: '/favicons/favicon.ico?v=QEMYzE9pb35555' }],
     script: [{ type: 'text/javascript', 'src': 'discord.min.js' }]
   },
-
-  // modules: [
-  //   ['@nuxtjs/google-adsense', {
-  //     id: 'ca-pub-4649450952406116'
-  //   }]
-  // ],
   /*
-  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-  <script>
-  (adsbygoogle = window.adsbygoogle || []).push({
-    google_ad_client: "ca-pub-4649450952406116",
-    enable_page_level_ads: true
-  });
-  </script>
   ** Global CSS
   */
   // css: ['~/assets/css/main.css'],
