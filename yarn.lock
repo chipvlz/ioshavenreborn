@@ -2,6 +2,10 @@
 # yarn lockfile v1
 
 
+"@nuxtjs/google-adsense@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@nuxtjs/google-adsense/-/google-adsense-1.0.1.tgz#8f85d6e18e51b5f95c3298c4e468b8faf742f162"
+
 abbrev@1:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/abbrev/-/abbrev-1.1.0.tgz#d0554c2256636e2f56e7c2e5ad183f859428d81f"
