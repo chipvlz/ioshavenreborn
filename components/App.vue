@@ -1,6 +1,10 @@
 <template lang="html">
   <div class="App" @click="showPopup">
-    <div class="content" >
+    <div class="content" v-if="!isapp">
+        <ad-fluid/>
+    </div>
+
+    <div class="content" v-if="isapp">
       <div class="title">{{data.title}}</div>
       <div class="image" :style="{'background-image': 'url(' + link('image') + ')'}"></div>
       <div class="version">Version: {{data.version}}</div>
@@ -8,7 +12,7 @@
       <a class="signed button" :href="link('signed')" v-if="data.signed">Install Signed</a>
     </div>
 
-    <popup :visible="popupVisible">
+    <popup :visible="popupVisible" v-if="isapp">
       <div class="header">{{data.title}}</div>
       <div class="body">
         <span v-html="data.desc" class="markdown-body"></span>
@@ -26,12 +30,14 @@
 
 <script>
 import Popup from '~/components/Popup.vue'
+import AdFluid from '~/components/ads/AdFluid.vue'
 
 export default {
   components: {
-    Popup
+    Popup,
+    AdFluid
   },
-  props: ['data'],
+  props: ['data', 'isapp'],
   data () {
     return {
       popupVisible: false
@@ -61,19 +67,23 @@ export default {
   $color: #fff;
   background: $color;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 0.3rem;
   cursor: pointer;
   transition: all 0.5s;
   &:hover {
     box-shadow: 0px 6px 6px darken($color, 50%);
   }
-  // width: 300px;
+  position: relative;
+  // width: 100%;
+  // display: block;
 }
 .content {
   display: grid;
   grid-gap: 1rem;
   text-align: center;
   padding: 1em;
+  // width: 100%;
+  grid-template-columns: repeat(1,minmax(1px, 1fr))
 }
 .image {
     height: 13rem;

@@ -97,8 +97,8 @@ app.set('port', port);
 app.use('/api', __WEBPACK_IMPORTED_MODULE_2__api__["a" /* default */]);
 
 // Import and Set Nuxt.js options
-var config = __webpack_require__(5);
-config.dev = !("production" === 'production');
+var config = __webpack_require__(10);
+config.dev = !("development" === 'production');
 
 // Init Nuxt.js
 var nuxt = new __WEBPACK_IMPORTED_MODULE_1_nuxt__["Nuxt"](config);
@@ -148,32 +148,188 @@ router.use(__WEBPACK_IMPORTED_MODULE_1__users__["a" /* default */]);
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_express__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_express___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_express__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__classes_User__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__classes_User___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__classes_User__);
+
 
 
 var router = Object(__WEBPACK_IMPORTED_MODULE_0_express__["Router"])();
 
-// Mock Users
-var users = [{ name: 'Alexandre' }, { name: 'Pooya' }, { name: 'Sébastien' }];
-
 /* GET users listing. */
 router.get('/users', function (req, res, next) {
-  res.json(users);
-});
-
-/* GET user by ID. */
-router.get('/users/:id', function (req, res, next) {
-  var id = parseInt(req.params.id);
-  if (id >= 0 && id < users.length) {
-    res.json(users[id]);
-  } else {
-    res.sendStatus(404);
-  }
+  var george = new __WEBPACK_IMPORTED_MODULE_1__classes_User___default.a('george');
+  george.set('age', 4);
+  george.save();
+  res.json(george.get());
 });
 
 /* harmony default export */ __webpack_exports__["a"] = (router);
 
 /***/ }),
 /* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var __init__ = __webpack_require__(6);
+
+var User = function (_init__) {
+  _inherits(User, _init__);
+
+  function User(name) {
+    _classCallCheck(this, User);
+
+    var _this = _possibleConstructorReturn(this, (User.__proto__ || Object.getPrototypeOf(User)).call(this));
+
+    _this.__key__ = name;
+    return _this;
+  }
+
+  return User;
+}(__init__);
+
+module.exports = User;
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(__dirname) {
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var fs = __webpack_require__(7);
+var path = __webpack_require__(8);
+
+var __init__ = function () {
+  function __init__(a) {
+    _classCallCheck(this, __init__);
+
+    this.__type__ = this.constructor.name;
+    this.__db__ = path.join(__dirname, '../db/', this.__type__ + '.json');
+    this.__data__ = this.constructor.all();
+  }
+
+  // export () {
+  //   let e = Object.assign({}, this.__data__)
+  //   Object.keys(e).forEach(k => {
+  //     if (k[0] == '_' && k[1] == '_') delete e[k]
+  //   })
+  //   return e
+  // }
+
+  _createClass(__init__, [{
+    key: 'set',
+    value: function set(item, value) {
+      this.__data__[this.__key__][item] = value;
+    }
+  }, {
+    key: 'public',
+    value: function _public() {
+      var e = Object.assign({}, this.get());
+      Object.keys(e).forEach(function (k) {
+        if (k[0] === '_') delete e[k];
+      });
+      return e;
+    }
+  }, {
+    key: 'private',
+    value: function _private() {
+      var e = Object.assign({}, this.get());
+      Object.keys(e).forEach(function (k) {
+        if (k[0] !== '_') delete e[k];
+      });
+      return e;
+    }
+  }, {
+    key: 'data',
+    value: function data() {
+      var o1 = Object.assign({}, this);
+      var o2 = Object.assign({}, this.get());
+      var e = Object.assign(o1, o2);
+      delete e['__data__'];
+      return e;
+    }
+  }, {
+    key: 'get',
+    value: function get() {
+      return this.__data__[this.__key__] || {};
+    }
+  }, {
+    key: 'drop',
+    value: function drop() {
+      delete this.__data__[this.__key__];
+      return this.save();
+    }
+  }, {
+    key: 'save',
+    value: function save() {
+      var _this = this;
+
+      this.__data__[this.__key__] = this.get();
+      return new Promise(function (resolve, reject) {
+        fs.writeFile(_this.__db__, JSON.stringify(_this.__data__, null, 2), function (err) {
+          if (err) return reject();
+          resolve(_this.__data__);
+        });
+      });
+    }
+  }], [{
+    key: 'all',
+    value: function all() {
+      var _db = path.join(__dirname, '../db/', this.name + '.json');
+      var data = void 0;
+      try {
+        data = !(function webpackMissingModule() { var e = new Error("Cannot find module \".\""); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+      } catch (e) {
+        data = {};
+      }
+      return data;
+    }
+  }]);
+
+  return __init__;
+}();
+
+module.exports = __init__;
+/* WEBPACK VAR INJECTION */}.call(exports, "server/classes"))
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports) {
+
+module.exports = require("fs");
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports) {
+
+module.exports = require("path");
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports) {
+
+function webpackEmptyContext(req) {
+	throw new Error("Cannot find module '" + req + "'.");
+}
+webpackEmptyContext.keys = function() { return []; };
+webpackEmptyContext.resolve = webpackEmptyContext;
+module.exports = webpackEmptyContext;
+webpackEmptyContext.id = 9;
+
+/***/ }),
+/* 10 */
 /***/ (function(module, exports) {
 
 module.exports = {

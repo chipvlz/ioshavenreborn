@@ -6,8 +6,14 @@
       <searchbar v-on:result="filterApps" v-if="!loading"/>
     </div>
     <div :class="{'apps': true, 'loading': searching}" id="apps">
-        <app :data="app" v-for="app in searchResults":key="app.id"/>
+        <app :data="app" :isapp="app.isapp" v-for="app in searchResults":key="app.id"/>
     </div>
+    <div class="apps autorow" v-if="chunk <= searchResults.length">
+      <div class="fullwidth more" @click="moreChunk">
+        Load more apps
+      </div>
+    </div>
+
   </div>
 </template>
 
@@ -26,16 +32,32 @@ export default {
   layout: 'default',
   async asyncData ({ params }) {
     let { data } = await axios.get('https://dashboard.ioshaven.co')
-    return { apps: data, searchResults: data }
+    return { apps: data }
   },
   data () {
     return {
       loading: true,
-      searching: true
+      searching: true,
+      chunk: 7,
+      searchResults: {},
+      apps: {},
+      searchData: {}
     }
   },
+  created () {
+    this.filterApps(this.searchResults, false)
+  },
   methods: {
+    moreChunk () {
+      console.log('asdf')
+      this.chunk += 7
+      this.filterApps(this.searchData, true)
+      setTimeout(function () {
+        window.dispatchEvent(new Event('resize'))
+      })
+    },
     filterApps (search, resize = true) {
+      this.searchData = search
       this.searchResults = []
       let sorted = Object.keys(this.apps).sort((a, b) => {
         return a.toLowerCase().localeCompare(b.toLowerCase())
@@ -83,6 +105,17 @@ export default {
         })
       }
 
+      this.searchResults = this.searchResults.slice(0, this.chunk)
+
+      let withads = []
+      this.searchResults.forEach((app, index) => {
+        app.isapp = true
+        if (index % 7 === 4) withads.push({isapp: false})
+        else withads.push(app)
+      })
+
+      // this.searchResults = withads
+
       if (resize) {
         this.searching = true
         setTimeout(function () {
@@ -116,11 +149,10 @@ export default {
     window.addEventListener('resize', this.resizeAllGridItems)
     // setTimeout(this.resizeAllGridItems, 10)
     window.onload = function () {
-      this.filterApps('', true)
       setTimeout(function () {
         window.dispatchEvent(new Event('resize'))
       })
-    }.bind(this)
+    }
   }
 }
 </script>
@@ -133,27 +165,30 @@ export default {
   grid-auto-flow: dense;
   grid-auto-rows: 1px;
   max-width: 960px;
+  &.autorow {
+    grid-auto-rows: auto;
+  }
 }
 .apps, .search-bar-wrapper {
   margin: auto;
   @media screen and (max-width: 575px){
-    grid-template-columns: repeat(1, 1fr);
+    grid-template-columns: repeat(1, minmax(300px, 1fr));
     max-width: 350px;
   }
   @media screen and (min-width: 576px) and (max-width: 767px) {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(1, minmax(300px, 1fr));
     max-width: 576px;
   }
   @media screen and (min-width: 768px) and (max-width: 1099px) {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, minmax(300px, 1fr));
     max-width: 768px;
   }
   @media screen and (min-width: 1100px) and (max-width: 1399px) {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, minmax(300px, 1fr));
     max-width: 1100px;
   }
   @media screen and (min-width: 1400px) {
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(4, minmax(300px, 1fr));
     max-width: 1400px;
   }
 }
@@ -165,6 +200,17 @@ export default {
   padding-bottom: 1rem;
   margin-bottom: 3rem;
   border-bottom: 1px solid;
+}
+
+.more {
+  border: 1px solid #ccc;
+  padding: 1rem;
+  text-align: center;
+  margin-top: 1rem;
+  border-radius: 0.5rem;
+  color: #2196F3;
+  background: white;
+  cursor: pointer;
 }
 
 </style>
