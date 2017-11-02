@@ -97,7 +97,11 @@ app.set('port', port);
 app.use('/api', __WEBPACK_IMPORTED_MODULE_2__api__["a" /* default */]);
 
 // Import and Set Nuxt.js options
+<<<<<<< HEAD
 var config = __webpack_require__(10);
+=======
+var config = __webpack_require__(5);
+>>>>>>> master
 config.dev = !("development" === 'production');
 
 // Init Nuxt.js

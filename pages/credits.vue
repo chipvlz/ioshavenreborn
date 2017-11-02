@@ -46,6 +46,8 @@
         <li>IraqStore<a href="https://ir4q.store" target="_blank"><i class="fal fa-globe"></i></a></li>
         <li>AppValley<a href="https://twitter.com/appvalley_vip" target="_blank"><i class="fab fa-twitter"></i></a></li>
         <li>Hassan Abdullah<a href="https://twitter.com/kakaswr22" target="_blank"><i class="fab fa-twitter"></i></a></li>
+        <li>TweakBoxApp<a href="https://twitter.com/TweakBoxApp" target="_blank"><i class="fab fa-twitter"></i></a></li>
+        <li>CetaceanNation<a href="https://twitter.com/CetaceanNation" target="_blank"><i class="fab fa-twitter"></i></a></li>
       </ul>
     </div>
   </div>
