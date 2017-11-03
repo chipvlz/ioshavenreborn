@@ -5,10 +5,11 @@
     <div class="search-bar-wrapper">
       <searchbar v-on:result="filterApps" v-if="!loading"/>
     </div>
+    <ad-banner class="grid autorow"/>
     <div :class="{'apps': true, 'loading': searching}" id="apps">
         <app :data="app" :isapp="app.isapp" v-for="app in searchResults":key="app.id"/>
     </div>
-    <div class="apps autorow" v-if="chunk <= searchResults.length">
+    <div class="grid autorow" v-if="chunk <= searchResults.length">
       <div class="fullwidth more" @click="moreChunk">
         Load more apps
       </div>
@@ -22,12 +23,14 @@ import axios from 'axios'
 import App from '~/components/App.vue'
 import Loading from '~/components/Loading.vue'
 import Searchbar from '~/components/Searchbar.vue'
+import AdBanner from '~/components/ads/AdBanner.vue'
 
 export default {
   components: {
     App,
     Loading,
-    Searchbar
+    Searchbar,
+    AdBanner
   },
   layout: 'default',
   async asyncData ({ params }) {
@@ -172,23 +175,23 @@ export default {
 .apps, .search-bar-wrapper {
   margin: auto;
   @media screen and (max-width: 575px){
-    grid-template-columns: repeat(1, minmax(300px, 1fr));
+    grid-template-columns: repeat(1, minmax(1px, 1fr));
     max-width: 350px;
   }
   @media screen and (min-width: 576px) and (max-width: 767px) {
-    grid-template-columns: repeat(1, minmax(300px, 1fr));
+    grid-template-columns: repeat(1, minmax(1px, 1fr));
     max-width: 576px;
   }
   @media screen and (min-width: 768px) and (max-width: 1099px) {
-    grid-template-columns: repeat(2, minmax(300px, 1fr));
+    grid-template-columns: repeat(2, minmax(1px, 1fr));
     max-width: 768px;
   }
   @media screen and (min-width: 1100px) and (max-width: 1399px) {
-    grid-template-columns: repeat(3, minmax(300px, 1fr));
+    grid-template-columns: repeat(3, minmax(1px, 1fr));
     max-width: 1100px;
   }
   @media screen and (min-width: 1400px) {
-    grid-template-columns: repeat(4, minmax(300px, 1fr));
+    grid-template-columns: repeat(4, minmax(1px, 1fr));
     max-width: 1400px;
   }
 }

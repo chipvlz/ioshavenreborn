@@ -1,7 +1,9 @@
 <template>
-<div class="VueToNuxtLogo swirl-in-fwd">
-  <img src="/logo.svg" alt="">
-</div>
+
+    <div class="VueToNuxtLogo swirl-in-fwd">
+      <img src="/logo.svg" alt="">
+    </div>
+
 </template>
 
 <style>
@@ -11,8 +13,8 @@
   display: inline-block;
   position: relative;
   overflow: hidden;
-  height: 12rem;
-  width: 10rem;
+  height: 10rem;
+  width: 8rem;
 }
 .swirl-in-fwd {
 	-webkit-animation: swirl-in-fwd 1s ease-out both;

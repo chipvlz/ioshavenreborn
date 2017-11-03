@@ -12,16 +12,23 @@
         <a href="#main-side-bar" class="button--red" @click="showSide">Launch</a>
         <a href="#" class="button--grey" @click="donate">Donate</a>
       </div>
+
+      <div class="grid">
+        <ad-banner class="grid autorow"/>
+      </div>
+
     </div>
   </section>
 </template>
 
 <script>
 import Logo from '~/components/Logo.vue'
+import AdBanner from '~/components/ads/AdBanner.vue'
 
 export default {
   components: {
-    Logo
+    Logo,
+    AdBanner
   },
   methods: {
     showSide () {
