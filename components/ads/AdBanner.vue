@@ -18,7 +18,7 @@
 
      <div :class="{
        'adblock': adsLoaded
-     }">
+     }" v-if="!adsLoaded">
        <h3>Ads Blocked</h3>
 
        <p>Please consider allowing ads to show on this site. This will allow us to bring you better content. </p>
@@ -53,10 +53,11 @@ export default {
     padding: 1rem;
   }
 .ad{
-  position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
+  text-align: center;
+  // position: absolute;
+  //   top: 0;
+  //   left: 50%;
+  //   transform: translateX(-50%);
 }
 .adblock {
   opacity: 0;
