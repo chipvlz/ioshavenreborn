@@ -6,7 +6,7 @@
   "private": true,
   "scripts": {
     "dev": "nuxt",
-    "build": "nuxt build",
+    "build": "nuxt build && backpack build",
     "start": "nuxt start",
     "generate": "nuxt generate",
     "precommit": "npm run lint",
