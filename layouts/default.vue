@@ -5,7 +5,7 @@
       <nuxt id="content"/>
       <sidebar color="#F44336" title="iOS Haven">
         <a href="/" class="item"><i class="fas fa-home"></i>Home</a>
-        <a href="#" @click="donate" class="item"><i class="fab fa-paypal"></i>Donate</a>
+        <a href="https://goo.gl/forms/PxD4jsXrInaRywwh2" class="item"><i class="fa fa-users"></i>Apply To Join Our Team</a>
         <a href="/apps" class="item"><i class="fab fa-app-store"></i>Apps</a>
         <a href="betas" class="item"><i class="fas fa-flask"></i>Betas</a>
         <a href="/jailbreaks" class="item"><i class="fas fa-user-secret"></i>Jailbreaks</a>
